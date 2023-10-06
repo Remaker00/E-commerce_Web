@@ -46,11 +46,10 @@
   font-size: 14px;
 }
 
-.right div {
-  background-color: #007bff; /* Background color for the cart button */
+.right div{/* Background color for the cart button */
   color: #fff; /* Text color for the cart button */
-  padding: 5px 10px;
-  border-radius: 3px;
+  padding: 5px;
   cursor: pointer;
   font-size: 14px;
+  margin-left: 2%;
 }

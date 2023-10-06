@@ -8,7 +8,8 @@
 /* Default styles for .itms */
 .itms {
     border: 2px solid rgb(193, 190, 190);
-    width: 100px;
+    max-width: 100%;
+    max-height: 100%;
     flex: 0 0 calc(33.3333% - 20px);
     margin: 10px;
     padding: 20px;
@@ -20,10 +21,8 @@
 
 .item img {
     max-width: 100%;
-    /* Limit the image width to the width of the container */
     max-height: 100px;
     transition: transform 0.3s ease;
-    /* Set a maximum height for the images */
 }
 
 
@@ -44,6 +43,20 @@
     transform: scale(1.1);
     cursor: pointer;
 
+}
+
+.item button {
+    cursor: pointer;
+    padding: 5px;
+    width: 30%;
+    border-radius: 5px;
+    background-color: #3614f5b2;
+    color: #fff;
+}
+
+.item button:hover {
+    background-color: #03010f;
+    color: #fff;
 }
 
 /* Media query for larger screens */

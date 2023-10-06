@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
 import classes from './Header.module.css';
+import HeaderCartButton from './Cart/HeaderCartButton';
 
-const Header = () => {
+const Header = ({ cartItemCount, onButtonClick }) => {
+
   return (
     <div className={classes.container}>
         <ul className={classes.left}>
@@ -15,7 +17,7 @@ const Header = () => {
         </div>
         <div className={classes.right}>
             <label>Search</label><input type='text' placeholder='Search Here...' />
-            <div>Cart</div>
+            <HeaderCartButton itemCount={cartItemCount} onButtonClick={onButtonClick} />
         </div>
     </div>
   )

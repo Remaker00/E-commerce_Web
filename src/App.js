@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react'
-import Header from './Components/Header'
-import Carousel from './Components/CarouselEffect/CarouselEffect'
-import Items from './Components/FrontItems/Items'
+import ParentComponent from './Components/ParentComponent'
 
 
 const App = () => {
   return (
-    <Fragment>
-      <Header />
-      <Carousel />
-      <Items />
-    </Fragment>
+      <ParentComponent />
+      
   )
 }
 
