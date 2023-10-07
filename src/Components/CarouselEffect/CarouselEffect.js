@@ -12,16 +12,16 @@ const CarouselEffect = () => {
     return (
         <Carousel className={classes.container} autoPlay={true} showArrows={false} infiniteLoop={true} showThumbs={false} >
             <div>
-                <img src={camera}/>
+                <img src={camera} alt='Camera'/>
             </div>
             <div>
-                <img src={phone}/>
+                <img src={phone} alt='Phone'/>
             </div>
             <div>
-                <img src={tv} />
+                <img src={tv} alt='Television'/>
             </div>
             <div>
-                <img src={ref} />
+                <img src={ref} alt='Refrigerator'/>
             </div>
         </Carousel>
     )

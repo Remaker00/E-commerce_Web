@@ -1,11 +1,17 @@
-import React, { Fragment } from 'react'
-import ParentComponent from './Components/ParentComponent'
+import React  from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ParentComponent from './Components/ParentComponent';
+import About from './Components/AboutPage/AboutPage';
 
+
+const router = createBrowserRouter([
+  { path: '/', element: <ParentComponent /> },
+  { path: '/about', element: <About /> }
+]);
 
 const App = () => {
   return (
-      <ParentComponent />
-      
+    <RouterProvider router={router} />
   )
 }
 

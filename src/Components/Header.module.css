@@ -5,6 +5,7 @@
   background-color: #333; /* Background color for the header */
   color: #fff; /* Text color for the header */
   padding: 10px 20px;
+  height: 50px;
 }
 
 .left {
@@ -17,6 +18,12 @@
 .left li {
   margin-right: 20px;
   cursor: pointer;
+}
+
+.left li a {
+  text-decoration: none;
+  color: white; 
+  cursor: pointer; 
 }
 
 .center {
