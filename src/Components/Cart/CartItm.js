@@ -1,7 +1,21 @@
 import React from 'react';
 import classes from './CartItems.module.css';
+import axios from 'axios';
 
 const CartItm = ({ cartItems, onIncreaseQuantity, onDecreaseQuantity, onRemoveItem }) => {
+
+
+    const handlePurchase = () => {
+        axios.post('http://localhost:4000/api/addItem', { cartItems })
+            .then((response) => {
+                console.log('Cart items saved:', response.data);
+            })
+            .catch((error) => {
+                console.error('Error saving cart items:', error);
+            });
+    };
+
+
     return (
         <div className={classes['cart-container']}>
             <h2>Cart</h2>
@@ -43,7 +57,7 @@ const CartItm = ({ cartItems, onIncreaseQuantity, onDecreaseQuantity, onRemoveIt
                     ))}
                 </tbody>
             </table>
-            <button className={classes["purchase-button"]} type="button">PURCHASE</button>
+            <button className={classes["purchase-button"]} type="button" onClick={handlePurchase}>PURCHASE</button>
         </div>
     );
 };

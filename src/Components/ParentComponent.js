@@ -1,5 +1,4 @@
-// ParentComponent.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Items from './FrontItems/Items';
 import CarouselEffect from './CarouselEffect/CarouselEffect';
@@ -7,18 +6,69 @@ import CartItm from './Cart/CartItm';
 import './BackDrop.css'; // Import the CSS for the backdrop
 
 const ParentComponent = () => {
-    const [cartItemCount, setCartItemCount] = useState(0);
-    const [cartItems, setCartItems] = useState([]); // State for storing cart items
+    const [cartItemCount, setCartItemCount] = useState(() => {
+        const storedCartItemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+        return storedCartItemCount;
+    });
+    const [cartItems, setCartItems] = useState(() => {
+        const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        return storedCartItems;
+    });
     const [isCartVisible, setIsCartVisible] = useState(false);
 
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        localStorage.setItem('cartItemCount', cartItemCount.toString());
+    }, [cartItems, cartItemCount]);
+
     const addToCartHandler = (item) => {
-        setCartItems((prevItems) => [...prevItems, item]);
+        const newItem = { ...item, quantity: 1 };
+        setCartItems((prevItems) => [...prevItems, newItem]);
         setCartItemCount((prevCount) => prevCount + 1);
     };
 
     const handleCartButtonClick = () => {
         setIsCartVisible((prevValue) => !prevValue); // Toggle cart visibility
     };
+
+    const onRemoveItem = (id) => {
+        const updateCartItems = cartItems.filter((item) => item.id !== id);
+
+        setCartItems(updateCartItems);
+
+        setCartItemCount((prevCount) => prevCount - 1);
+    }
+
+    const handledecrease = (id) => {
+        const updatedCartItems = cartItems.map((item) =>
+            item.id === id && item.quantity > 1
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+        );
+
+        const updatedCartItemCount = updatedCartItems.reduce(
+            (total, item) => total + item.quantity,
+            0
+        );
+
+        setCartItems(updatedCartItems);
+        setCartItemCount(updatedCartItemCount);
+    };
+
+    const handleincrease = (id) => {
+        const updatedCartItems = cartItems.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+    
+        const updatedCartItemCount = updatedCartItems.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+    
+        setCartItems(updatedCartItems);
+        setCartItemCount(updatedCartItemCount);
+      };
 
     return (
         <div>
@@ -29,7 +79,10 @@ const ParentComponent = () => {
                 <div className="cart-container">
                     <CartItm
                         cartItems={cartItems}
-                        onCartClose={handleCartButtonClick} // Close the cart when the backdrop is clicked
+                        onCartClose={handleCartButtonClick}
+                        onDecreaseQuantity={handledecrease}
+                        onIncreaseQuantity={handleincrease}
+                        onRemoveItem={onRemoveItem}
                     />
                 </div>
             )}

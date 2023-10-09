@@ -2,7 +2,7 @@
 import React from 'react';
 import classes from './Item.module.css';
 
-const Item = ({ imageSrc, description, price, onAddToCart }) => {
+const Item = ({ imageSrc, name, description, price, onAddToCart }) => {
 
   const handleClick = (event) => {
     event.preventDefault(); // Prevent the form submission and page refresh
@@ -12,6 +12,7 @@ const Item = ({ imageSrc, description, price, onAddToCart }) => {
   return (
     <div className={classes["item"]}>
       <img src={imageSrc} alt={description} />
+      <p className={classes["name"]}>{name}</p>
       <p className={classes["description"]}>{description}</p>
       <p className={classes["price"]}>{price}</p>
       <form>
