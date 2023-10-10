@@ -1,13 +1,19 @@
 import React from 'react';
 import ItemForm from './ItemForm';
 import classes from './Item.module.css';
+import { Link } from 'react-router-dom';
 
-const ITEMS_DATA = [
+export const ITEMS_DATA = [
   {
     id: 'item1',
     imageSrc: require('../FrontItems/Product_Images/cam1.png'),
-    name: 'Camera',
-    description: 'Camera Description',
+    name: 'NIKON Coolpix P960',
+    description: [
+      'High-resolution image sensor',
+      'Zoom lens with optical image stabilization',
+      '4K video recording',
+      'Built-in Wi-Fi and Bluetooth for easy sharing',
+    ],
     price: 199.99,
   },
   {
@@ -68,10 +74,12 @@ const ITEMS_DATA = [
   },
 ];
 
-const Items = ({onAddToCart}) => {
+const Items = ({ onAddToCart }) => {
 
   const itemsList = ITEMS_DATA.map((item) => (
     <div className={classes['itms']} key={item.id}>
+      <Link to={`/ProductReview/${item.id}`}>Click it</Link>
+
       <ItemForm
         imageSrc={item.imageSrc}
         name={item.name}
@@ -79,6 +87,8 @@ const Items = ({onAddToCart}) => {
         price={item.price}
         onAddToCart={() => onAddToCart(item)}
       />
+
+      
     </div>
   ))
 

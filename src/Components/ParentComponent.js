@@ -23,8 +23,26 @@ const ParentComponent = () => {
     }, [cartItems, cartItemCount]);
 
     const addToCartHandler = (item) => {
-        const newItem = { ...item, quantity: 1 };
-        setCartItems((prevItems) => [...prevItems, newItem]);
+        // Check if the item is already in the cart
+        const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
+
+        if (existingItemIndex !== -1) {
+            // If the item exists in the cart, increase its quantity by 1
+            const updatedCartItems = cartItems.map((cartItem, index) => {
+                if (index === existingItemIndex) {
+                    return { ...cartItem, quantity: cartItem.quantity + 1 };
+                } else {
+                    return cartItem;
+                }
+            });
+
+            setCartItems(updatedCartItems);
+        } else {
+            // If the item is not in the cart, add it with a quantity of 1
+            const newItem = { ...item, quantity: 1 };
+            setCartItems((prevItems) => [...prevItems, newItem]);
+        }
+
         setCartItemCount((prevCount) => prevCount + 1);
     };
 
@@ -33,12 +51,19 @@ const ParentComponent = () => {
     };
 
     const onRemoveItem = (id) => {
-        const updateCartItems = cartItems.filter((item) => item.id !== id);
+        const updatedCartItems = cartItems.filter((item) => item.id !== id);
+        const updatedCartItemCount = updatedCartItems.reduce(
+            (total, item) => total + item.quantity,
+            0
+        );
 
-        setCartItems(updateCartItems);
+        setCartItems(updatedCartItems);
+        setCartItemCount(updatedCartItemCount);
 
-        setCartItemCount((prevCount) => prevCount - 1);
-    }
+        // Update the local storage for cartItemCount and cartItems
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        localStorage.setItem('cartItemCount', updatedCartItemCount.toString());
+    };
 
     const handledecrease = (id) => {
         const updatedCartItems = cartItems.map((item) =>
@@ -58,17 +83,17 @@ const ParentComponent = () => {
 
     const handleincrease = (id) => {
         const updatedCartItems = cartItems.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
         );
-    
+
         const updatedCartItemCount = updatedCartItems.reduce(
-          (total, item) => total + item.quantity,
-          0
+            (total, item) => total + item.quantity,
+            0
         );
-    
+
         setCartItems(updatedCartItems);
         setCartItemCount(updatedCartItemCount);
-      };
+    };
 
     return (
         <div>

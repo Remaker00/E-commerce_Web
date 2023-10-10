@@ -13,10 +13,9 @@ const Item = ({ imageSrc, name, description, price, onAddToCart }) => {
     <div className={classes["item"]}>
       <img src={imageSrc} alt={description} />
       <p className={classes["name"]}>{name}</p>
-      <p className={classes["description"]}>{description}</p>
       <p className={classes["price"]}>{price}</p>
       <form>
-        <button onClick={handleClick}>Buy</button>
+        <button onClick={handleClick}>Add To Cart</button>
       </form>
     </div>
   );
