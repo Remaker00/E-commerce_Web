@@ -5,6 +5,7 @@ import About from './Components/AboutPage/AboutPage';
 import ContactUs from './Components/ContactUs/ContactUs';
 import Order from './Components/YourOrder/Order';
 import ProductReview from './Components/Productreview/ProductReview';
+import AuthForm from './Components/Pages/AuthForm';
 
 
 const router = createBrowserRouter([
@@ -12,7 +13,8 @@ const router = createBrowserRouter([
   { path: '/about', element: <About /> },
   { path: '/contactus', element: <ContactUs /> },
   {path: '/yourOrders', element: <Order />},
-  {path: '/ProductReview/:itemId', element: <ProductReview />}
+  {path: '/ProductReview/:itemId', element: <ProductReview />},
+  {path: '/authform', element: <AuthForm />}
 ]);
 
 const App = () => {

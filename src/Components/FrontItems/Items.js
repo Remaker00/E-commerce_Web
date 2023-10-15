@@ -78,13 +78,13 @@ const Items = ({ onAddToCart }) => {
 
   const itemsList = ITEMS_DATA.map((item) => (
     <div className={classes['itms']} key={item.id}>
-      <Link to={`/ProductReview/${item.id}`}>Click it</Link>
+      <Link to={`/ProductReview/${item.id}`}>Read Review</Link>
 
       <ItemForm
         imageSrc={item.imageSrc}
         name={item.name}
         description={item.description}
-        price={item.price}
+        price={`Price: $${item.price}`}
         onAddToCart={() => onAddToCart(item)}
       />
 
