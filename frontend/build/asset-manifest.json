@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1a5343ef.css",
+    "main.js": "/static/js/main.7ffd7b63.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/ref.png": "/static/media/ref.01401e1d0577dfe94644.png",
+    "static/media/camera.png": "/static/media/camera.64c2115c4a95089e925f.png",
+    "static/media/tv.png": "/static/media/tv.5e441442c076a792bbc1.png",
+    "static/media/phone.png": "/static/media/phone.6403d07abd0b03900a0c.png",
+    "static/media/phone1.png": "/static/media/phone1.13041f7689ed0110f204.png",
+    "static/media/game.png": "/static/media/game.4809fdbb0d471ded08fc.png",
+    "static/media/tv2.png": "/static/media/tv2.8211f2d7c365b4ad6f12.png",
+    "static/media/tv1.png": "/static/media/tv1.2cf40fc4b369ded400a6.png",
+    "static/media/home1.png": "/static/media/home1.4bdd3815c5be1e9b034d.png",
+    "static/media/laptop.png": "/static/media/laptop.ea1252eb4fa8e521fc6e.png",
+    "static/media/watch1.png": "/static/media/watch1.db039769fac429a1b4e3.png",
+    "static/media/cam1.png": "/static/media/cam1.5fb20fdfb69ae2755349.png",
+    "static/media/ref1.png": "/static/media/ref1.ab97f24644bf9f55244e.png",
+    "index.html": "/index.html",
+    "main.1a5343ef.css.map": "/static/css/main.1a5343ef.css.map",
+    "main.7ffd7b63.js.map": "/static/js/main.7ffd7b63.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a5343ef.css",
+    "static/js/main.7ffd7b63.js"
+  ]
+}
