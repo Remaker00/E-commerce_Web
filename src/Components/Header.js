@@ -28,7 +28,7 @@ const Header = ({ cartItemCount, onButtonClick }) => {
         <DropDown isOpen={isDropdownVisible} toggleDropdown={toggleDropdown} />
       </div>
       <ul className={classes.left}>
-        <li><Link to="/">Home</Link></li>
+        <li><Link to="/productform">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li>Categories</li>
       </ul>

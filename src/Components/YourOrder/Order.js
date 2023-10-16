@@ -2,14 +2,21 @@ import React from 'react';
 import './Order.css';
 import Header from '../AboutPage/Header';
 import axios from 'axios';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 const Order = () => {
 
     const [orderItems, setorderItems] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/getCartItems')
+
+        const token = localStorage.getItem('token');
+
+        axios.get('http://localhost:4000/api/getCartItems', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then((response) => {
                 setorderItems(response.data);
             })

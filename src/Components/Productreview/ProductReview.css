@@ -3,7 +3,7 @@
 .product-review-container {
     float: right;
     border: 3px solid rgba(184, 182, 182, 0.451);
-    max-width: 50%;
+    width: 50%;
     margin: 0 auto;
     padding: 20px;
 }

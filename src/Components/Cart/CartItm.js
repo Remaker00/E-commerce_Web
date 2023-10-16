@@ -4,11 +4,28 @@ import axios from 'axios';
 
 const CartItm = ({ cartItems, onIncreaseQuantity, onDecreaseQuantity, onRemoveItem }) => {
 
+    const token = localStorage.getItem('token');
+
+    const calculateTotal=()=>{
+
+        const total =  cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        return total.toFixed(2);
+    }
 
     const handlePurchase = () => {
-        axios.post('http://localhost:4000/api/addItem', { cartItems })
+        axios.post('http://localhost:4000/api/addItem', cartItems, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then((response) => {
+                alert("YaY!!! Order Placed");
                 console.log('Cart items saved:', response.data);
+
+                localStorage.removeItem('cartItems');
+                localStorage.removeItem('cartItemCount');
+
+                window.location.reload();
             })
             .catch((error) => {
                 console.error('Error saving cart items:', error);
@@ -57,6 +74,9 @@ const CartItm = ({ cartItems, onIncreaseQuantity, onDecreaseQuantity, onRemoveIt
                     ))}
                 </tbody>
             </table>
+            <div>
+                <strong>TOTAL: ${calculateTotal()}</strong>
+            </div>
             <button className={classes["purchase-button"]} type="button" onClick={handlePurchase}>PURCHASE</button>
         </div>
     );

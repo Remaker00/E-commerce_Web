@@ -28,7 +28,7 @@ const ProductReview = () => {
     <div>
       <div className="product-review-image">
         <img src={selectedProduct.imageSrc} alt={selectedProduct.name}/>
-        <button><Link to="/">Back</Link></button>
+        <button><Link to="/productform">Back</Link></button>
       </div>
       <div className="product-review-container">
         {selectedProduct && (

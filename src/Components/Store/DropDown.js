@@ -4,6 +4,16 @@ import classes from './Dropdown.module.css';
 
 const DropDown = ({ isOpen, toggleDropdown }) => {
 
+    const handlelogout=()=>{
+        localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        localStorage.removeItem('cartItems');
+        localStorage.removeItem('cartItemCount');
+
+        window.location.href="/";
+
+    }
+
 
     return (
         <div>
@@ -19,6 +29,7 @@ const DropDown = ({ isOpen, toggleDropdown }) => {
                         <li><Link to="/contactus" className={classes["link-reset"]}>Contact Us</Link></li>
                         <li>Settings</li>
                         <li>Payments</li>
+                        <li onClick={handlelogout}>Logout</li>
                     </ul>
                 )}
             </div>

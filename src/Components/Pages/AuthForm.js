@@ -28,10 +28,15 @@ const AuthForm = () => {
     });
   };
 
+  const handleForgotPasswordClick =()=>{
+    
+    window.location.href = '/forgetpassword';
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignUp) {
-      axios.post('http://localhost:4000/user/addUser', formData)
+      axios.post('http://localhost:4000/user/addUser', { formData })
         .then((response) => {
           alert('Account Successfully Created:', response.data);
           setFormData({
@@ -48,7 +53,9 @@ const AuthForm = () => {
         .then((response) => {
           alert('Successfully Logged In:', response.data);
 
-          window.location.href = '/';
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('email', response.data.email);
+          window.location.href = '/productform';
           setFormData({
             username: '',
             email: '',
@@ -96,9 +103,15 @@ const AuthForm = () => {
         </div>
         <button type="submit">{isSignUp ? 'Sign Up' : 'Login'}</button>
       </form>
-      <p onClick={handleToggleForm}>
-        {isSignUp ? 'Already have an account? Log in' : 'Don\'t have an account? Sign up'}
-      </p>
+      {isSignUp && (
+        <p onClick={handleToggleForm}>Already have an account? Log in</p>
+      )}
+      {!isSignUp && (
+        <div>
+          <p onClick={handleToggleForm}>Don't have an account? Sign up</p>
+          <p onClick={handleForgotPasswordClick}>Forgot Password?</p>
+        </div>
+      )}
     </div>
   );
 };

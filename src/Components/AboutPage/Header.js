@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={classes.container}>
         <ul className={classes.left}>
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/productform">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li>Categories</li>
         </ul>
