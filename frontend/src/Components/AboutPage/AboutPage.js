@@ -1,15 +1,14 @@
 import React from 'react';
-import classes from './About.module.css';
 import Header from './Header';
 
 const AboutPage = () => {
     return (
         <div>
             <Header />
-            <div className={classes['container']}>
+            <div className='container-about'>
                 <h1>ZUWAVA</h1>
                 <h2>About Us</h2>
-                <div className={classes['content']}>
+                <div className='content-about'>
                     <p>Welcome to Our E-Commerce Store!</p>
                     <p>
                         At Our Company, we are passionate about providing you with the best shopping experience. We offer a wide range of high-quality products at competitive prices, making it easy for you to find exactly what you need.

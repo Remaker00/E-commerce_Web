@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { ITEMS_DATA } from '../FrontItems/Items'
+import { ITEMS_DATA } from '../Data/Items_data'
 import './ProductReview.css'
 import { Link } from 'react-router-dom';
 

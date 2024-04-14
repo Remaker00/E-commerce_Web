@@ -6,14 +6,20 @@ const CartItm = ({ cartItems, onIncreaseQuantity, onDecreaseQuantity, onRemoveIt
 
     const token = localStorage.getItem('token');
 
-    const calculateTotal=()=>{
+    const calculateTotal = () => {
 
-        const total =  cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        const total = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
         return total.toFixed(2);
     }
 
     const handlePurchase = () => {
-        axios.post('http://localhost:4000/api/addItem', cartItems, {
+        if (!token) {
+
+            alert("Please log in first to make a purchase.");
+            return;
+        }
+
+        axios.post('https://e-commerce-web-tau-lyart.vercel.app/api/addItem', cartItems, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

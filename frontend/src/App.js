@@ -5,12 +5,15 @@ import About from './Components/AboutPage/AboutPage';
 import ContactUs from './Components/ContactUs/ContactUs';
 import Order from './Components/YourOrder/Order';
 import ProductReview from './Components/Productreview/ProductReview';
-import AuthForm from './Components/Pages/AuthForm';
 import Password from './Components/Pages/Password';
+import LoginForm from './Components/Pages/LoginForm';
+import SignupForm from './Components/Pages/SignupFrom';
+import './App.css';
 
 
 const router = createBrowserRouter([
-  { path: '/', element: <AuthForm /> },
+  { path: '/', element: <SignupForm /> },
+  { path: '/login-form', element: <LoginForm /> },
   { path: '/about', element: <About /> },
   { path: '/contactus', element: <ContactUs /> },
   {path: '/yourOrders', element: <Order />},

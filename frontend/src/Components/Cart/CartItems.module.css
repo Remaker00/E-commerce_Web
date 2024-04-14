@@ -4,16 +4,15 @@
     top: 11%;
     right: 0;
     width: 60%;
-    background-color: rgba(254, 254, 254, 0.864);
+    background-color: rgba(254, 254, 254, 0.316);
+    backdrop-filter: blur(10px);
     border: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1;
     height: auto;
     overflow-y: auto;
+    z-index: 1;
     text-align: center;
 }
-
-
 
 h2 {
     font-size: 24px;

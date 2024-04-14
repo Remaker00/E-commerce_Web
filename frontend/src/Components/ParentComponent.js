@@ -3,7 +3,8 @@ import Header from './Header';
 import Items from './FrontItems/Items';
 import CarouselEffect from './CarouselEffect/CarouselEffect';
 import CartItm from './Cart/CartItm';
-import './BackDrop.css'; // Import the CSS for the backdrop
+import DropDown from './Store/DropDown';
+import { ITEMS_DATA } from './Data/Items_data';
 
 const ParentComponent = () => {
     const [cartItemCount, setCartItemCount] = useState(() => {
@@ -16,6 +17,24 @@ const ParentComponent = () => {
     });
     const [isCartVisible, setIsCartVisible] = useState(false);
 
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredItems, setFilteredItems] = useState(ITEMS_DATA);
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+
+        const filteredData = ITEMS_DATA.filter((item) =>
+            item.name.toLowerCase().includes(query)
+        );
+
+        setFilteredItems(filteredData);
+        setSearchQuery(query);
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownVisible((prev) => !prev);
+    };
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -96,10 +115,21 @@ const ParentComponent = () => {
     };
 
     return (
-        <div>
-            <Header cartItemCount={cartItemCount} onButtonClick={handleCartButtonClick} />
-            <CarouselEffect />
-            <Items onAddToCart={addToCartHandler} />
+        <div className='container-main'>
+            <div className='section1'>
+                <Header cartItemCount={cartItemCount} onButtonClick={handleCartButtonClick} searchQuery={searchQuery}
+                    handleSearch={handleSearch} />
+            </div>
+
+            <div className='section2'>
+                <div className='section2-left'>
+                    <DropDown toggleDropdown={toggleDropdown} isOpen={isDropdownVisible} />
+                </div>
+                <div className='section2-right'>
+                    <CarouselEffect />
+                    <Items onAddToCart={addToCartHandler} filteredItems={filteredItems} />
+                </div>
+            </div>
             {isCartVisible && (
                 <div className="cart-container">
                     <CartItm

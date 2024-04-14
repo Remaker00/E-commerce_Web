@@ -1,34 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import 'boxicons';
 
 const Password = () => {
   const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitted email:', email);
-    axios.post('http://localhost:4000/password/send_mail', {email})
+
+    axios.post('https://e-commerce-web-tau-lyart.vercel.app/password/send_mail', { email })
       .then((response) => {
         alert('Email Sent Success:', response.data);
-        
-
       })
       .catch((error) => {
         alert('Error:', error);
       });
   };
 
-  const handleToggleBack = () => {
-
-    window.location.href = '/';
-  }
-
   return (
     <div className="auth-container">
       <h2>Forgot Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Email:</label>
+          <box-icon type='logo' name='gmail'></box-icon>
           <input
             type="email"
             name="email"
@@ -39,7 +34,7 @@ const Password = () => {
         <button type="submit">Submit</button>
       </form>
       <div>
-        <p onClick={handleToggleBack}>Back</p>
+        <p><Link to="/login-form">Back</Link></p>
       </div>
     </div>
   );

@@ -1,19 +1,17 @@
-// Item.js
 import React from 'react';
-import classes from './Item.module.css';
 
-const Item = ({ imageSrc, name, description, price, onAddToCart }) => {
+const ItemForm = ({ imageSrc, name, description, price, onAddToCart }) => {
 
   const handleClick = (event) => {
-    event.preventDefault(); // Prevent the form submission and page refresh
+    event.preventDefault();
     onAddToCart();
   };
 
   return (
-    <div className={classes["item"]}>
+    <div className="item">
       <img src={imageSrc} alt={description} />
-      <p className={classes["name"]}>{name}</p>
-      <p className={classes["price"]}>{price}</p>
+      <p className="name">{name}</p>
+      <p className="price">{price}</p>
       <form>
         <button onClick={handleClick}>Add To Cart</button>
       </form>
@@ -21,4 +19,4 @@ const Item = ({ imageSrc, name, description, price, onAddToCart }) => {
   );
 };
 
-export default Item;
+export default ItemForm;
